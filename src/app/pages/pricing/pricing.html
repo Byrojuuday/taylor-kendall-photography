@@ -1,0 +1,32 @@
+<article class="page">
+  <div class="frame-hero">
+    <app-photo-frame
+      label="Leaving the church doors"
+      [path]="hero"
+      ratio="16 / 9"
+      [tone]="3"
+      [image]="false"
+    />
+  </div>
+
+  <section class="pricing-copy">
+    <p class="eyebrow">
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M8 1.2 9.6 6H14.6L10.6 8.8 12.1 13.6 8 10.8 3.9 13.6 5.4 8.8 1.4 6H6.4Z"
+        />
+      </svg>
+      Photo + Video
+    </p>
+    <h1 class="headline">starting at $6,000</h1>
+    <p class="lede">
+      Photo and film coverage for the wedding day, told in a documentary style. The collection is
+      shaped around your timeline, from the first preparations to the last dance.
+    </p>
+    <p class="lede">
+      For a personal quote, please contact us at:
+      <a class="text-link" [href]="'mailto:' + email">{{ email }}</a>
+    </p>
+  </section>
+</article>

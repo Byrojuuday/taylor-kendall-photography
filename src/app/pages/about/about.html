@@ -1,0 +1,53 @@
+<article class="page">
+  <header class="about-intro">
+    <p class="eyebrow">About us</p>
+    <h1 class="headline">wedding duo from ohio</h1>
+    <p class="lede">
+      We started our wedding documentation in 2026. That was a big year for us — we got married and
+      both of us left our former careers in software engineering and graphic design.
+    </p>
+  </header>
+
+  <article class="profile">
+    <app-photo-frame
+      label="Taylor Kendall"
+      [path]="taylor"
+      ratio="21 / 16"
+      [tone]="2"
+      loading="eager"
+    />
+    <div class="profile__copy">
+      <p class="profile__role">Photographer, Manager</p>
+      <h2 class="profile__name">taylor kendall</h2>
+      <p class="lede">
+        I’m a documentary-style wedding photographer with a heart for genuine moments. I’m not here
+        to tell you how to pose or where to stand. I’m most interested in getting to know your real
+        story and documenting the love and joy of your wedding day.
+      </p>
+    </div>
+  </article>
+
+  <article class="profile profile--copy-only">
+    <div class="profile__copy">
+      <p class="profile__role">Cinematographer, Designer</p>
+      <h2 class="profile__name">kaleb kendall</h2>
+      <p class="lede">
+        I didn’t think weddings were all that cool until I experienced my own. Now I understand how
+        vulnerable and special they are. In a world where love means more than ever, I aim to
+        portray that poetic, transitional, significant feeling that a couple feels on their wedding
+        day.
+      </p>
+    </div>
+  </article>
+
+  <div class="life">
+    @for (photo of life; track photo.id) {
+      <app-photo-frame
+        [label]="photo.label"
+        [path]="photo.path"
+        [ratio]="photo.ratio"
+        [tone]="photo.tone"
+      />
+    }
+  </div>
+</article>

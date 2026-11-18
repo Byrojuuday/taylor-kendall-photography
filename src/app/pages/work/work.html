@@ -1,0 +1,61 @@
+<article class="page">
+  <header class="page-intro">
+    <p class="eyebrow">Work</p>
+    <h1 class="headline">wedding gallery</h1>
+    <p class="lede">
+      Weddings, documented as they happen. Ceremonies, portraits, and the hours that follow,
+      gathered into one gallery.
+    </p>
+    <div class="actions">
+      <a class="btn" routerLink="/contact">Book now</a>
+      <a class="btn" [href]="youtube" target="_blank" rel="noopener noreferrer">View on YouTube</a>
+    </div>
+  </header>
+
+  <div class="split">
+    <div class="split__col">
+      @for (photo of openingLeft; track photo.id) {
+        <app-photo-frame
+          [label]="photo.label"
+          [path]="photo.path"
+          [ratio]="photo.ratio"
+          [tone]="photo.tone"
+        />
+      }
+    </div>
+    <div class="split__col">
+      @for (photo of openingRight; track photo.id) {
+        <app-photo-frame
+          [label]="photo.label"
+          [path]="photo.path"
+          [ratio]="photo.ratio"
+          [tone]="photo.tone"
+        />
+      }
+    </div>
+  </div>
+
+  <figure class="feature">
+    <app-photo-frame
+      label="Couple at the cake table"
+      [path]="feature"
+      ratio="3 / 2"
+      [tone]="2"
+    />
+    <figcaption class="feature__caption">
+      <p>John &amp; Jane Doe got married in Cincinnati, Ohio.</p>
+      <a class="btn" [href]="youtube" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+    </figcaption>
+  </figure>
+
+  <div class="pair-grid">
+    @for (photo of pairs; track photo.id) {
+      <app-photo-frame
+        [label]="photo.label"
+        [path]="photo.path"
+        [ratio]="photo.ratio"
+        [tone]="photo.tone"
+      />
+    }
+  </div>
+</article>

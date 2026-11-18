@@ -1,0 +1,16 @@
+<div class="photo-frame__canvas">
+  @if (image() && !missing()) {
+    <img
+      class="photo-frame__image"
+      [src]="path()"
+      [alt]="label()"
+      [attr.loading]="loading()"
+      decoding="async"
+      (error)="onError()"
+    />
+  } @else {
+    <div class="photo-frame__inner">
+      <p class="photo-frame__label">{{ label() }}</p>
+    </div>
+  }
+</div>
