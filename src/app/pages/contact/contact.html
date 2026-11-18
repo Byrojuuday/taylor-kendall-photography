@@ -1,0 +1,76 @@
+<article class="page">
+  <div class="frame-hero">
+    <app-photo-frame
+      label="Bride with the wedding party"
+      [path]="hero"
+      ratio="16 / 9"
+      [tone]="1"
+      [image]="false"
+    />
+  </div>
+
+  <section class="contact-copy">
+    <p class="kicker">Book your wedding</p>
+    <h1 class="headline">responses within 48 hours</h1>
+    <p class="lede">
+      Use the contact form below, or send an email to:
+      <a class="text-link" [href]="'mailto:' + email">{{ email }}</a>
+    </p>
+  </section>
+
+  <form
+    class="contact-form"
+    [class.is-attempted]="attempted()"
+    #contactForm="ngForm"
+    (ngSubmit)="onSubmit(contactForm)"
+    novalidate
+  >
+    <h2 class="form-title">Contact form</h2>
+
+    <div class="field">
+      <label class="field__label" for="name">name</label>
+      <input id="name" name="name" ngModel required autocomplete="name" />
+      @if (attempted() && contactForm.controls['name']?.invalid) {
+        <p class="field__error">required</p>
+      }
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="email">email</label>
+      <input id="email" name="email" type="email" ngModel required email autocomplete="email" />
+      @if (attempted() && contactForm.controls['email']?.invalid) {
+        <p class="field__error">
+          {{ contactForm.controls['email']?.errors?.['required'] ? 'required' : 'enter a valid email' }}
+        </p>
+      }
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="wedding-date">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+          <rect x="2" y="3.2" width="12" height="10.2" rx="1" fill="none" stroke="currentColor" stroke-width="1.2" />
+          <path fill="none" stroke="currentColor" stroke-width="1.2" d="M2 6.4h12M5.2 2v2.4M10.8 2v2.4" />
+        </svg>
+        wedding date
+      </label>
+      <input id="wedding-date" name="weddingDate" type="date" ngModel autocomplete="off" />
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="message">message</label>
+      <textarea id="message" name="message" rows="4" ngModel required></textarea>
+      @if (attempted() && contactForm.controls['message']?.invalid) {
+        <p class="field__error">required</p>
+      }
+    </div>
+
+    @if (acknowledged()) {
+      <p class="form-note" role="status">
+        This form does not send email yet. Please write to
+        <a class="text-link" [href]="'mailto:' + email">{{ email }}</a>.
+      </p>
+    } @else {
+      <button class="btn btn--solid" type="submit">Send</button>
+    }
+  </form>
+</article>

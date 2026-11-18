@@ -1,0 +1,87 @@
+<article class="page">
+  <div class="hero">
+    <app-photo-frame
+      label="Couple at the cake table"
+      [path]="hero"
+      ratio="3 / 2"
+      loading="eager"
+      [tone]="2"
+      captionAlign="end"
+    />
+    <a class="scroll-cue" href="#story">
+      <span class="sr-only">Scroll to the story</span>
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.2"
+          d="M3 6l5 5 5-5"
+        />
+      </svg>
+    </a>
+  </div>
+
+  <section id="story" class="center-block">
+    <p class="kicker">your story:</p>
+    <h1 class="headline">honestly documented &amp; beautifully told</h1>
+    <p class="lede">
+      We photograph and film weddings the way they actually unfold. No posing line and no
+      performance. Just the people you love, kept honest and close.
+    </p>
+    <a class="btn" routerLink="/contact">Book your wedding</a>
+  </section>
+
+  <div class="split">
+    <div class="split__col">
+      @for (photo of galleryLeft; track photo.id) {
+        <app-photo-frame
+          [label]="photo.label"
+          [path]="photo.path"
+          [ratio]="photo.ratio"
+          [tone]="photo.tone"
+        />
+      }
+    </div>
+    <div class="split__col">
+      @for (photo of galleryRight; track photo.id) {
+        <app-photo-frame
+          [label]="photo.label"
+          [path]="photo.path"
+          [ratio]="photo.ratio"
+          [tone]="photo.tone"
+        />
+      }
+    </div>
+  </div>
+
+  <section class="center-block">
+    <p class="lede">
+      A wedding gallery is a record of the day as it was lived. Processions, speeches, dances,
+      and the quiet minutes in between.
+    </p>
+    <a class="btn" routerLink="/work">See our work</a>
+  </section>
+
+  <div class="split split--story">
+    <div class="split__col">
+      @for (photo of storyLeft; track photo.id) {
+        <app-photo-frame
+          [label]="photo.label"
+          [path]="photo.path"
+          [ratio]="photo.ratio"
+          [tone]="photo.tone"
+        />
+      }
+    </div>
+    <div class="split__col">
+      @for (photo of storyRight; track photo.id) {
+        <app-photo-frame
+          [label]="photo.label"
+          [path]="photo.path"
+          [ratio]="photo.ratio"
+          [tone]="photo.tone"
+        />
+      }
+    </div>
+  </div>
+</article>
